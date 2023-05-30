@@ -96,12 +96,12 @@ void init_damier(int **p) {
 
 //verifier es que une Mouvement horizontal est possible
 bool possible_horizontale(deplacement d,int **p){
-    int i_d,i_f,j_d,j_f;
+    int j_d,j_f;
     int j,aux;
     bool test;
     j_d=d.case_i.col;
     j_f=d.case_f.col;
-    i_d=d.case_i.lig;
+    i=d.case_i.lig;
     if (j_f<j_d){
         aux=j_d;
         j_d=j_f;
