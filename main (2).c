@@ -39,7 +39,7 @@ char couleur(int i,int j){
 }
 // une Procedure qui permet d'afficher le contenu d'une Ligne 
 void affiche_ligne(int i,int** p) {
-    int k,j ;
+    int j ;
     printf(" %d ",i+1) ;
     for(j=0 ;j<8 ;j++) {
         if(p[i][j]==0){ 
@@ -49,14 +49,12 @@ void affiche_ligne(int i,int** p) {
                 printf("| X%c",couleur(i,j)) ;
         }
         else if(p[i][j]==-1) {
-            
                printf("| Y%c",couleur(i,j)) ;
         }
     }
     printf("| %d\n",i+1) ;
     printf(" |---------------------------------|\n") ;
 }
-
 //une Procedure qui Permet d'afficher toute le Plateau 
 void affiche_damier(int** p) {
     int i ;
@@ -66,14 +64,14 @@ void affiche_damier(int** p) {
             affiche_ligne(i,p) ;
         }
         printf("    a   b   c   d   e   f   g   h \n") ;
-    }
+}
     
 //Pour initialiser, le damier, il suffit de donner la valeur PION NOIR et PION BLANC aux cases où les pions doivent se trouver en début de partie.
 void init_damier(int **p) {
     int i,j ;
         printf("Damier a l'etat brut \n");
         affiche_damier(p);  
-        //On remplie le Premier Ligne de la partie haute du damier par des pions blancs
+        //On remplie la première Ligne de la partie haute du damier par des pions Blanc
         for(j=0 ;j<8 ;j++){
             p[0][j] = PION_BLANC;
         }
@@ -83,20 +81,18 @@ void init_damier(int **p) {
                 p[i][j]=CASE_VIDE;
             }
         }
-        //On remplie la derniereLigne de la partie basse du damier par des pions Noirs
+        //On remplie la derniere Ligne de la partie basse du damier par des pions Noir
         for(j=0 ;j<8 ;j++){
             p[7][j] = PION_NOIR ;
         }
 
     printf("Damier a l'etat initial \n");
-    affiche_damier(p);    
-    }
-
-
-//verifier es que une Mouvement horizontal est possible
+    affiche_damier(p);  
+}
+//verifier si un mouvement horizontal est possible
 bool possible_horizontale(deplacement d,int **p){
     int j_d,j_f;
-    int j,aux;
+    int i,j,aux;
     bool test;
     j_d=d.case_i.col;
     j_f=d.case_f.col;
@@ -107,7 +103,7 @@ bool possible_horizontale(deplacement d,int **p){
         j_f=aux;
     }
     test=true;
-    for (j=j_d+1; j<=j_f;j++){
+    for (j=j_d+1;j<=j_f;j++){
         if (p[i][j]!=CASE_VIDE){
             test=false;
         }
@@ -121,6 +117,7 @@ bool permis_horizontal(deplacement d,int **p){
     j_f=d.case_f.col;
     i_d=d.case_i.lig;
     i_f=d.case_f.lig;
+  
     if ((j_d!=j_f) && (i_d==i_f)){
         return possible_horizontale(d,p);
     }
@@ -142,7 +139,7 @@ bool possible_vers_le_bas(deplacement d,int **p){
     }
     return true;
 }
-//verifier es que une Mouvement vers le haut est possible
+//verifier  si un mouvement vers le haut est possible
 bool possible_vers_le_haut(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j=d.case_i.col;
@@ -157,8 +154,8 @@ bool possible_vers_le_haut(deplacement d,int **p){
 }
 
 
-// verifier si une deplacement vers le bas est permis 
-bool permis_avant(deplacement d,int **p){
+// verifier si un deplacement vers le bas est permis 
+bool permis_bas(deplacement d,int **p){
      int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
     j_f=d.case_f.col;
@@ -337,7 +334,7 @@ Case choisir(){
 }
 
 bool possible_joueur_1(deplacement d,int **p){
-    return (possible_horizontale(d,p) || (possible_vers_le_bas(d,p)) || (possible_vers_le_diag1_bas(d,p)) || (possible_vers_le_diag2_bas(d,p)) );
+    return (permis_bas(d,p) || (permis_diag1_bas(d,p)) || (permis_diag2_bas(d,p)) || (permis_horizontal(d,p)) );
 }
 
 //le Premier depplacement du premier Joueur
@@ -364,7 +361,7 @@ Case jeux_joueur_x(int **p){
 
 
 bool Possible_joueur_2(deplacement d,int **p){
-    return ((possible_horizontale(d,p)) || (possible_vers_le_haut(d,p)) || (possible_vers_le_diag1_haut(d,p)) || (possible_vers_le_diag2_haut(d,p))) ;
+    return ((permis_haut(d,p)) || (permis_diag1_haut(d,p)) || (permis_diag2_haut(d,p)) || (permis_horizontal(d,p))) ;
 }
 //saisir les noms de deux Joueurs
 void saisir_nom(joueur j1,joueur j2){
@@ -406,6 +403,7 @@ int jeux(int **p){
         p[cf.lig][cf.col]=PION_NOIR;
     //puis on affiche la nouvelle etat
     affiche_damier(p); 
+      tour=1;
     }
     //si c'est le premier joueur il choisi un pion de meme couleur que celui ou se trouve le dernier pion de joueur 2
     else{
@@ -424,7 +422,8 @@ int jeux(int **p){
         p[cd.lig][cd.col]=CASE_VIDE;
         p[cf.lig][cf.col]=PION_BLANC;
     //puis on affiche la nouvelle etat
-    affiche_damier(p); 
+    affiche_damier(p);
+      tour=2;
     }
     }
     if (cf.lig==0){
