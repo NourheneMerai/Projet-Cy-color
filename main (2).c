@@ -1,7 +1,6 @@
 # include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <stdlib.h>
 # define PION_BLANC 1
 # define PION_NOIR -1
 # define CASE_VIDE 0
