@@ -110,7 +110,7 @@ bool possible_horizontale(deplacement d,int **p){
     }
     return test;
 }
-// verifier si une deplacement horizentale est permis 
+// verifier si un deplacement horizental est permis 
 bool permis_horizontal(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -126,7 +126,7 @@ bool permis_horizontal(deplacement d,int **p){
     }
 }
 
-//verifier es que une Mouvement vers le bas est possible
+//verifier si un mouvement vers le bas est possible
 bool possible_vers_le_bas(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j=d.case_i.col;
@@ -187,7 +187,7 @@ bool permis_haut(deplacement d,int **p){
 }
 
 
-//verifier es que une Mouvement diag principale vers le bas est possible
+//verifier  si un mouvement diag principale vers le bas est possible
 bool possible_vers_le_diag1_bas(deplacement d,int **p){
      int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -207,7 +207,7 @@ bool possible_vers_le_diag1_bas(deplacement d,int **p){
     return true;
 }
 
-//verifier es que une Mouvement diag principale vers le haut est possible
+//verifier si un mouvement diag principale vers le haut est possible
 bool possible_vers_le_diag1_haut(deplacement d,int **p){
      int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -226,7 +226,7 @@ bool possible_vers_le_diag1_haut(deplacement d,int **p){
         }while ((i<=i_f)||(j<=j_f));
     return true;
 }
-// verifier si une deplacement vers le diag principale vers le bas est permis 
+// verifier si un deplacement sur la diag principale vers le bas est permis 
 bool permis_diag1_bas(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -241,7 +241,7 @@ bool permis_diag1_bas(deplacement d,int **p){
     }
 }
 
-// verifier si une deplacement vers le diag principale vers le haut est permis 
+// verifier si un deplacement sur la diag principale vers le haut est permis 
 bool permis_diag1_haut(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -256,7 +256,7 @@ bool permis_diag1_haut(deplacement d,int **p){
     }
 }
 
-//verifier es que une Mouvement diag secondaire vers le bas est possible
+//verifier si un mouvement diag secondaire vers le bas est possible
 bool possible_vers_le_diag2_bas(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -274,7 +274,7 @@ bool possible_vers_le_diag2_bas(deplacement d,int **p){
     return true;
 }
 
-//verifier es que une Mouvement diag secondaire vers le haut est possible
+//verifier si le mouvement diag secondaire vers le haut est possible
 bool possible_vers_le_diag2_haut(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -292,7 +292,7 @@ bool possible_vers_le_diag2_haut(deplacement d,int **p){
     return true;
 }
 
-// verifier si une deplacement vers le diag secondaire vers le bas est permis 
+// verifier si un deplacement sur la diag secondaire vers le bas est permis 
 bool permis_diag2_bas(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -307,7 +307,7 @@ bool permis_diag2_bas(deplacement d,int **p){
     }
 }
 
-// verifier si une deplacement vers le diag secondaire vers le haut est permis 
+// verifier si un deplacement sur la diag secondaire vers le haut est permis 
 bool permis_diag2_haut(deplacement d,int **p){
     int i_d,i_f,j_d,j_f,i,j;
     j_d=d.case_i.col;
@@ -337,7 +337,7 @@ bool possible_joueur_1(deplacement d,int **p){
     return (permis_bas(d,p) || (permis_diag1_bas(d,p)) || (permis_diag2_bas(d,p)) || (permis_horizontal(d,p)) );
 }
 
-//le Premier depplacement du premier Joueur
+//le Premier deplacement du premier Joueur
 Case jeux_joueur_x(int **p){
     deplacement d;
     Case cd,cf;
@@ -363,7 +363,7 @@ Case jeux_joueur_x(int **p){
 bool Possible_joueur_2(deplacement d,int **p){
     return ((permis_haut(d,p)) || (permis_diag1_haut(d,p)) || (permis_diag2_haut(d,p)) || (permis_horizontal(d,p))) ;
 }
-//saisir les noms de deux Joueurs
+//saisir les noms des deux Joueurs
 void saisir_nom(joueur j1,joueur j2){
   printf("donner le nom du Premier de Joeur : \n");
     scanf(" %s",j1.nom);
