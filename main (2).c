@@ -74,7 +74,7 @@ void init_damier(int **p) {
     int i,j ;
         printf("Damier a l'etat brut \n");
         affiche_damier(p);  
-        //On remplie le Premier Ligne de la partie haute du damier par des pions noirs
+        //On remplie le Premier Ligne de la partie haute du damier par des pions blancs
         for(j=0 ;j<8 ;j++){
             p[0][j] = PION_BLANC;
         }
@@ -84,7 +84,7 @@ void init_damier(int **p) {
                 p[i][j]=CASE_VIDE;
             }
         }
-        //On remplie le Premier Ligne de la partie basse du damier par des pions blancs
+        //On remplie la derniereLigne de la partie basse du damier par des pions Noirs
         for(j=0 ;j<8 ;j++){
             p[7][j] = PION_NOIR ;
         }
