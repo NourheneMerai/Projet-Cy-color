@@ -121,7 +121,8 @@ bool permis_horizontal(deplacement d,int **p){
     j_d=d.case_i.col;
     j_f=d.case_f.col;
     i_d=d.case_i.lig;
-    if ((j_d!=j_d) && (i_d==i_f)){
+    i_f=d.case_f.lig;
+    if ((j_d!=j_f) && (i_d==i_f)){
         return possible_horizontale(d,p);
     }
     else {
