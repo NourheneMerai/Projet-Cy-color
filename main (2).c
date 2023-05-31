@@ -8,7 +8,7 @@
 typedef struct {
     int lig,col ;
 } Case ;
-//La structure deplacement, qui symbolise un deplacement, cette structure possède deux éléments,deux case, une étant la case initiale, l’autre la case finale
+//La structure deplacement, qui symbolise un deplacement, cette structure possède deux éléments,deux cases, une qui est la case initiale, l’autre la case finale
 typedef struct {
     Case case_i,case_f ;
 } deplacement ;
